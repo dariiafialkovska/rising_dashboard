@@ -1,11 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+    font-family: 'HK Grotesk';
+    src: url('/fonts/HKGrotesk-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
 
-/* input styles */
+@font-face {
+    font-family: 'HK Grotesk';
+    src: url('/fonts/HKGrotesk-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    font-family: 'HK Grotesk', sans-serif; 
+}
+
+.active {
+    background: #78B6FF33;
+    border-radius: 1.5rem;
+    border-width: 1px;
+}
 
 .body-background {
     background-color:#F7FAFC;
+    
 }
 
 input {
@@ -37,14 +59,19 @@ input {
 
 
 .sidebar {
-    position: fixed;
-    width: 140px; /* Width of the sidebar */
-    height: 100%;
-    color: #E6E8EB;
-    padding: 5px;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    background-color: #E6E8EB; /* Color of the divider */
-
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    width: 90px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+.main-content {
+    flex-grow: 1; 
+    padding: 8px;
+    overflow-x: hidden; 
 }
 
 .sidebar::after {
@@ -53,39 +80,101 @@ input {
     right: 0;
     top: 0;
     bottom: 0;
-    width: 1px; /* Thickness of the divider */
-    background-color: #F7FAFC; /* Color of the divider */
+    width: 2px; 
+    background-color:  #E6E8EB;
 }
 
-// sidebar li on hover
 .sidebar-list:hover {
-    background-color: #E6E8EB;
-    color: #000;
+    background-color: #D6E4FF; 
+    color: #000;              
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 2rem;
-    border-bottom: 1px solid #d1d5db; /* Tailwind's gray-300 */
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
+    padding-top: 6rem;
 }
 
 .header h1 {
-    font-size: 1.5rem; /* Tailwind's text-2xl */
-    font-weight: 700;  /* Tailwind's font-bold */
+    font-size: 2rem; 
+    font-weight: 700;
 }
 
 .header nav a {
     margin-left: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    color: #1d4ed8; /* Tailwind's blue-600 */
+    color: #1d4ed8;
     font-weight: 700;
-    border-bottom: 2px solid transparent;
 }
 
-.header nav a.active {
-    border-bottom-color: #1d4ed8; /* Tailwind's blue-600 */
+.flex-grow {
+    transition: margin-left 0.3s; 
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    min-height: 100vh; 
+    min-width: 100vw; 
+    background-color: #f4f4f4; 
+}
+
+
+.max-w-4xl {
+    max-width: 1024px; 
+    margin: auto;      
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100px; 
+    }
+
+    .flex-grow {
+        margin-left: 100px; 
+    }
+    .container {
+        grid-template-columns: 150px 1fr; 
+    }
+    
+}
+
+@media (max-width: 500px) {
+    .sidebar {
+        position: static; 
+        width: 50%; 
+        height: auto; 
+    }
+
+    .flex-grow {
+        margin-left: 0;
+    }
+
+}
+
+.toast-notification {
+    position: fixed;
+    top: 20px; 
+    right: 100px;
+    background-color:#78B6FF4D;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1050; /* High enough to float above most content */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toast-notification button {
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.toast-notification p {
+    font-weight: 500;
 }

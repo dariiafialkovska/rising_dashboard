@@ -8,6 +8,7 @@ const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
+    console.log(router); // Inspect the router object in your browser's console
 
     // Define the handleLogin function
     const handleLogin = async (event: React.FormEvent) => {
@@ -31,6 +32,7 @@ const LoginPage = () => {
     };
 
     return (
+        <div>
         <div className="login">
         <form onSubmit={handleLogin}>
             <label>
@@ -41,6 +43,7 @@ const LoginPage = () => {
             </label>
             <button type="submit">login</button>
         </form>
+        </div>
         </div>
     );
 };

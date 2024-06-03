@@ -50,7 +50,7 @@ const Transactions = ({ data }: TransactionsProps) => {
                                 <td className="border-b p-4">{row.rental}</td>
                                 <td className="border-b p-4">{row.ipcount}</td>
                                 <td className="border-b p-4">{row.purpose}</td>
-                                <td className="border-b p-4">{new Date(row.date).toLocaleDateString()}</td>
+                                <td className="border-b p-4">{new Date(row.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}</td>
                                 <td className="border-b p-4">
                                 <Dropdown onActionSelect={(action) => handleActionSelect(action, row)} />
                                 </td>

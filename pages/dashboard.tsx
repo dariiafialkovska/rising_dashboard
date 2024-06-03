@@ -2,12 +2,11 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Sidebar from '../components/Sidebar';
 import Link from 'next/link';
-import Header from '@/components/Header';
-import Transactions from '@/components/Transactions';
-import InfoCards from '@/components/InfoCards';
-import DataChart from '@/components/DataChart';
-import ToastNotification from '@/components/ToastNotification';
-
+import Header from 'components/Header';
+import Transactions from 'components/Transactions';
+import InfoCards from 'components/InfoCards';
+import DataChart from 'components/DataChart';
+import ToastNotification from 'components/ToastNotification';
 const Dashboard = () => {
     // Define the state variables
     const [activeTab, setActiveTab] = useState('dashboard');
@@ -95,7 +94,7 @@ const Dashboard = () => {
                             <div id="default-tab-content">
                                 {activeTab === 'proxies' && (
                                     <div id="my-proxies" role="tabpanel" aria-labelledby="my-proxies-tab">
-                                        <p className="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content for the <strong className="font-medium text-gray-800 dark:text-white">My Proxies tab's associated content</strong>. </p>
+                                        <p className="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content for the <strong className="font-medium text-gray-800 dark:text-white">My Proxies tabs associated content</strong>. </p>
                                     </div>
                                 )}
 

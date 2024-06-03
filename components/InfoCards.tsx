@@ -55,11 +55,11 @@ const InfoCards = () => {
                 <h4 className="text-base">Subscription Expires On</h4>
                 <p className="text-2xl">{infoData.expireTime}</p>
             </div>
-            <div className=" p-8 rounded-2xl h-30 w-full flex flex-col justify-center bg-slate-200" >
+            <div className="p-8 rounded-2xl h-30 w-full flex flex-col justify-center bg-slate-200">
                 <h3 className="text-base">Last Charge</h3>
-                <div className="flex-row items-center">
-                    <p className="text-2xl">{infoData.lastChargeAmount}</p>
-                    <p className="text-sm">{infoData.lastCharge}</p>
+                <div className="flex flex-row items-center">
+                    <p className="text-2xl mr-2">{infoData.lastChargeAmount}</p>
+                    <p className="text-base">{infoData.lastCharge}</p>
                 </div>
             </div>
             <div className=" p-8 rounded-2xl h-30 w-full flex flex-col justify-center  bg-sky-100" >

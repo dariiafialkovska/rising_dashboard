@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 //Formatting GB data
 function formatDataUsage(number: number): string {
@@ -16,6 +17,7 @@ const InfoCards = () => {
         totalDataUsage: 0
 
     });
+    const router = useRouter();
 
     useEffect(() => {
         const fetchInfoData = async () => {
@@ -23,6 +25,7 @@ const InfoCards = () => {
             // Check if token is available
             if (!token) {
                 console.error('No JWT token found');
+                router.push('/login');
                 return;
             }
             // Fetch info data
@@ -41,6 +44,8 @@ const InfoCards = () => {
                 });
             } catch (error) {
                 console.error('Error fetching info data:', error);
+                // Redirect to login page if the token is invalid
+                router.push('/login');
             }
         };
 

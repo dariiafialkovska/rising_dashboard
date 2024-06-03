@@ -137,18 +137,34 @@ input {
     .container {
         grid-template-columns: 150px 1fr; 
     }
+    .toast-notification {
+        display:flex;
+    }
     
 }
 
 @media (max-width: 500px) {
-    .sidebar {
-        position: static; 
-        width: 50%; 
-        height: auto; 
+    .header nav a {
+        margin: 8px; 
+        font-size: 14px;
     }
-
+    .sidebar {
+        position: fixed;
+        left: -100%; 
+        width: 50%; 
+        transition: left 0.3s;
+    }
+   
     .flex-grow {
         margin-left: 0;
+    }
+
+    .container {
+        grid-template-columns: 1fr; 
+    }
+
+    .toast-notification {
+        display: none;
     }
 
 }
@@ -162,7 +178,6 @@ input {
     padding: 10px 20px;
     border-radius: 5px;
     z-index: 1050; 
-    display: flex;
     align-items: center;
     justify-content: space-between;
 }

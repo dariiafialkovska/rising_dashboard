@@ -7,12 +7,14 @@ import Transactions from 'components/Transactions';
 import InfoCards from 'components/InfoCards';
 import DataChart from 'components/DataChart';
 import ToastNotification from 'components/ToastNotification';
+import { useRouter } from 'next/router';
 const Dashboard = () => {
     // Define the state variables
     const [activeTab, setActiveTab] = useState('dashboard');
     const [tableData, setTableData] = useState([]);
     const [activePage, setActivePage] = useState('dashboard'); // Manage active state at a higher level
     const [showPopup, setShowPopup] = useState(true);
+    const router = useRouter();
 
     useEffect(() => {
 
@@ -21,6 +23,8 @@ const Dashboard = () => {
             const token = localStorage.getItem('jwt');
             if (!token) {
                 console.error('No JWT token found');
+                router.push('/login');
+
                 return;
             } 
             // Fetch table data
@@ -31,6 +35,8 @@ const Dashboard = () => {
                 setTableData(response.data.data);
             } catch (error) {
                 console.error('Error fetching table data:', error);
+                // Redirect to login page if the token is invalid
+                router.push('/login');
             }
         };
 

@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 
 interface DropdownProps {
-    onActionSelect: (action: string) => void; 
+    onActionSelect: (action: string, ipcount: number) => void;
+    ipcount: number;
 }
 
 // Define the Dropdown component
 
-const Dropdown: React.FC<DropdownProps> = ({ onActionSelect }) => {
+const Dropdown: React.FC<DropdownProps> = ({ onActionSelect, ipcount }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedAction, setSelectedAction] = useState('Actions');
 
     const handleActionClick = (action: string) => {
-        onActionSelect(action);
-        setSelectedAction(action); 
-        setIsOpen(false); 
+        onActionSelect(action, ipcount);
+        setIsOpen(false);
     };
 
     return (
@@ -25,13 +25,13 @@ const Dropdown: React.FC<DropdownProps> = ({ onActionSelect }) => {
             </button>
             {isOpen && (
                 <ul className="origin-top-right absolute left-0 mt-1 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
-                    <li className="p-2 hover:bg-gray-100 cursor-pointer" onClick={() => onActionSelect('In Progress')}>
+                    <li className="p-2 hover:bg-gray-100 cursor-pointer" onClick={() => handleActionClick('In Progress')}>
                         In Progress
                     </li>
-                    <li className="p-2 hover:bg-gray-100 cursor-pointer" onClick={() => onActionSelect('Processing')}>
+                    <li className="p-2 hover:bg-gray-100 cursor-pointer" onClick={() => handleActionClick('Processing')}>
                         Processing
                     </li>
-                    <li className="p-2 hover:bg-gray-100 cursor-pointer" onClick={() => onActionSelect('Completed')}>
+                    <li className="p-2 hover:bg-gray-100 cursor-pointer" onClick={() => handleActionClick('Completed')}>
                         Completed
                     </li>
                 </ul>

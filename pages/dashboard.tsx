@@ -22,15 +22,12 @@ const Dashboard = () => {
             if (!token) {
                 console.error('No JWT token found');
                 return;
-            } else {
-                console.log("token: ", token);
-            }
+            } 
             // Fetch table data
             try {
                 const response = await axios.get('https://recruitment-api.vercel.app/get-table', {
                     headers: { Authorization: `${token}` }
                 });
-                console.log('Table data:', response.data.data);
                 setTableData(response.data.data);
             } catch (error) {
                 console.error('Error fetching table data:', error);

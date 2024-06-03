@@ -8,7 +8,6 @@ const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
-    console.log(router); // Inspect the router object in your browser's console
 
     // Define the handleLogin function
     const handleLogin = async (event: React.FormEvent) => {
@@ -19,8 +18,6 @@ const LoginPage = () => {
                 username,
                 password
             });
-            console.log('Login response:', response.data);
-            console.log("username: ", username);
             // Check if the response contains a JWT token
             if (response.data.jwt) {
                 localStorage.setItem('jwt', response.data.jwt);

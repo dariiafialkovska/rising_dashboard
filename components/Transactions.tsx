@@ -17,8 +17,8 @@ interface TransactionsProps {
 
 // Define the Transactions component
 const Transactions = ({ data }: TransactionsProps) => {
-    const handleActionSelect = (action: string, row: Transaction) => {
-        console.log(`Action "${action}" selected for`, row);
+    const handleActionSelect = (action: string, ipcount: number) => {
+        console.log(`Action "${action}" selected with Number of IP: ${ipcount}`);
     };
     return (
         <div className="bg-white p-8 rounded-lg shadow">
@@ -52,7 +52,7 @@ const Transactions = ({ data }: TransactionsProps) => {
                                 <td className="border-b p-4">{row.purpose}</td>
                                 <td className="border-b p-4">{new Date(row.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}</td>
                                 <td className="border-b p-4">
-                                <Dropdown onActionSelect={(action) => handleActionSelect(action, row)} />
+                                <Dropdown onActionSelect={(action) => handleActionSelect(action, row.ipcount)} ipcount={row.ipcount}/>
                                 </td>
                             </tr>
                         ))

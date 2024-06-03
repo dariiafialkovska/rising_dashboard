@@ -30,7 +30,6 @@ const InfoCards = () => {
                 const response = await axios.get('https://recruitment-api.vercel.app/get-info', {
                     headers: { Authorization: `${token}` }
                 });
-                console.log('Info data:', response.data);
                 // Set info data
                 setInfoData({
                     dailyUsageData: response.data.dailyUsage,
